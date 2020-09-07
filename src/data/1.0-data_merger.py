@@ -1,5 +1,4 @@
 # %%
-# %%
 import os
 import pandas as pd
 import numpy as np
@@ -16,5 +15,13 @@ us_confirmed_case.head(10)
 us_confirmed_death = pd.read_csv(PROJECT_ROOT_DORECTORY + "/data/raw/time_series_covid_19_deaths_US.csv")
 us_confirmed_death.head(10)
 
-us_confirmed_case_trimmed = us_confirmed_case.drop(us_confirmed_case.columns[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]])
-us_confirmed_case_trimmed.head(10)
+us_confirmed_case_trimmed = us_confirmed_case
+us_confirmed_case_trimmed = us_confirmed_case_trimmed.drop(
+    us_confirmed_case.columns[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]], 1)
+
+us_confirmed_death_trimmed = us_confirmed_death
+us_confirmed_death_trimmed = us_confirmed_death_trimmed.drop(
+    us_confirmed_death.columns[[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]], 1)
+# us_confirmed_case_trimmed.replace(0, 1)
+us_confirmed_death_trimmed = us_confirmed_death_trimmed / us_confirmed_case_trimmed
+us_confirmed_death_trimmed.head(10)
