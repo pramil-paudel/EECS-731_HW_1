@@ -33,4 +33,6 @@ us_confirmed_death_other_data = us_confirmed_death[
 
 # Creating a new % data frame
 merged_df = pd.concat([us_confirmed_death_other_data, us_confirmed_death_day_wise_percentage], axis=1)
+merged_df.drop("Population",axis=1)
 merged_df.to_csv(PROJECT_ROOT_DORECTORY + "/data/processed/time_series_covid_19_deaths_US_percentage.csv")
+print(merged_df.head(10))
